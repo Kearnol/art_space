@@ -1,0 +1,138 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Oswald', sans-serif;
+}
+
+body {
+    background-image: url("../static/imgs/space.jpg")
+}
+
+.container{
+    width: 70%;
+    margin: auto;
+}
+
+.form {
+    width: 600px;
+    border: 2px solid rgb(0, 179, 255);
+    background-color: black;
+    color: rgb(60, 239, 131);
+    padding: 30px;
+    margin: auto;
+    margin-top: 20px;
+}
+
+.inner_register {
+    width: 80%;
+}
+
+h2 {
+    color: rgb(60, 239, 131);
+    margin-bottom: 10px;
+    text-decoration: underline;
+    text-decoration-color: rgb(60, 239, 131);
+    font-family: "Press Start 2P";
+}
+
+.form h3 {
+    color: rgb(60, 239, 131);
+    margin-bottom: 10px;
+    font-family: "Press Start 2P";
+}
+
+.flex{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+input { 
+    margin-bottom: 12px;
+    width: 80%;
+    height: 1.5em;
+    border-radius: 3px;
+}
+
+.alert_text {
+    color:goldenrod;
+}
+
+.mini_text {
+    font-size: .7em;
+    margin-left: 20px;
+}
+
+#pass_text {
+    position: relative;
+    top: -10px;
+}
+
+.btn { 
+    border-radius: 5px;
+    width: 100px;
+    height: 30px;
+    margin: 10px;
+    margin-bottom:0px;
+    text-align: center;
+    background-color: rgb(0, 0, 0);
+    border: 2px solid rgb(0, 179, 255);
+    color: ghostwhite;
+    font-family: "Press Start 2P";
+    font-size: .6em;
+}
+
+.btn:hover { 
+    background-color: greenyellow;
+    color: black;
+}
+
+.message-text {
+    color: red !important;
+}
+
+a {
+    color: rgb(240, 84, 191);
+}
+
+td {
+    color: ghostwhite;
+}
+.td-l { 
+    width: 25%;
+    color: rgb(60, 239, 131);
+}
+
+.btn-small { 
+    border-radius: 5px;
+    width: 80px;
+    height: 20px;
+    margin: 10px;
+    margin-bottom:0px;
+    text-align: center;
+    background-color: rgb(0, 0, 0);
+    border: 2px solid rgb(0, 179, 255);
+    color: ghostwhite;
+    font-family: "Press Start 2P";
+    font-size: .6em;
+}
+
+.delete:hover { 
+    background-color: rgb(242, 71, 45);
+    color: black;
+}
+.edit:hover { 
+    background-color: rgb(242, 219, 46);
+    color: black;
+}
+.logout:hover { 
+    background-color: rgb(247, 162, 43);
+    color: black;
+}
+
+input, textarea {
+    background-color: black;
+    border: 2px solid rgb(210, 210, 213);
+    color: rgb(254, 248, 255);
+    padding:3px;
+}

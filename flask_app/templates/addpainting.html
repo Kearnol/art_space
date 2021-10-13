@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link
+			rel="stylesheet"
+			href="{{ url_for('static', filename='style.css') }}"
+		/>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap"
+			rel="stylesheet"
+		/>
+		<link
+			href="https://fonts.googleapis.com/css?family=Press+Start+2P"
+			rel="stylesheet"
+		/>
+		<!-- <link href="https://unpkg.com/nes.css/css/nes.css" rel="stylesheet" /> -->
+		<title>Add/Edit Painting</title>
+	</head>
+	<body>
+		<div class="container">
+			{% with messages = get_flashed_messages() %} {% if messages %}
+			<div class="form">
+				<h3 class="message-text">Message</h3>
+				{% for message in messages %}
+				<p class="alert_text">{{message}}</p>
+				{% endfor %}
+			</div>
+			{% endif %} {% endwith %}
+			<div class="form">
+				<h3>User {{session["first_name"]}}</h3>
+				<div class="flex">
+					<a href="/logout"><button class="btn logout">Logout</button></a>
+					<a href="/dashboard"><button class="btn">Dashboard</button></a>
+				</div>
+			</div>
+            <div class="form">
+                <h3>Add a Painting</h3>
+                <form action="/savepainting" method="POST">
+                    <label for="title">Title:</label><br>
+                    <input type="text" name="title" id="title"><br>
+                    <label for="descriptioin">Description</label><br>
+                    <textarea name="description" id="description" cols="60" rows="5"></textarea><br>
+                    <label for="price">Price:</label><br>
+                    <input type="number" name="price" id="price" step="0.01" min="0" value="0.00"><br>
+                    <label for="quantity">Quantity:</label><br>
+                    <input type="number" name="quantity" id="quantity" min="1" value="1"><br>
+                    <input type="submit" class="btn" value="Submit">
+                </form>
+            </div>
+		</div>
+	</body>
+</html>

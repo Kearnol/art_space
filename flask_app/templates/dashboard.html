@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link
+			rel="stylesheet"
+			href="{{ url_for('static', filename='style.css') }}"
+		/>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap"
+			rel="stylesheet"
+		/>
+		<link
+			href="https://fonts.googleapis.com/css?family=Press+Start+2P"
+			rel="stylesheet"
+		/>
+		<!-- <link href="https://unpkg.com/nes.css/css/nes.css" rel="stylesheet" /> -->
+		<title>Welcome</title>
+	</head>
+	<body>
+		<div class="container">
+			{% with messages = get_flashed_messages() %} {% if messages %}
+			<div class="form">
+				<h3 class="message-text">Message</h3>
+				{% for message in messages %}
+				<p class="alert_text">{{message}}</p>
+				{% endfor %}
+			</div>
+			{% endif %} {% endwith %}
+			<div class="form">
+				<h3>Welcome {{session["first_name"]}}!</h3>
+				<div class="flex">
+					<a href="/logout"><button class="btn logout">Logout</button></a>
+					<a href="/addpainting"><button class="btn">Add Painting</button></a>
+				</div>
+			</div>
+			<div class="form">
+				<h3>All Paintings</h3>
+				<table>
+					{%for painting in paintings %}
+					<tr>
+						<td>
+							<a href="/viewpainting/{{painting.id}}">{{painting.title}}</a> by {{painting.paintedby.first_name}}{{painting.paintedby.last_name}}
+						</td>
+						<td><a href="/editpainting/{{painting.id}}"><button class="btn-small edit">Edit</button></a></td>
+						<td><a href="/deletepainting/{{painting.id}}"><button class="btn-small delete">Delete</button></a></td>
+					</tr>
+					{% endfor %}
+				</table>
+			</div>
+			<div class="form">
+				<h3>Your Purchases</h3>
+				<table>
+					{%for painting in users_purchased.purchased %}
+					{% if users_purchased.purchased[0] %}
+					<tr>
+						<td>
+							<a href="/viewpainting/{{painting.id}}">{{painting.title}}</a> by {{painting.paintedby}}
+						</td>
+					</tr>
+					{% endif %}
+					{% endfor %}
+				</table>
+			</div>
+		</div>
+	</body>
+</html>

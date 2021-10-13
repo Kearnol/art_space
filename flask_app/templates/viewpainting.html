@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link
+			rel="stylesheet"
+			href="{{ url_for('static', filename='style.css') }}"
+		/>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap"
+			rel="stylesheet"
+		/>
+		<link
+			href="https://fonts.googleapis.com/css?family=Press+Start+2P"
+			rel="stylesheet"
+		/>
+		<!-- <link href="https://unpkg.com/nes.css/css/nes.css" rel="stylesheet" /> -->
+		<title>View {{painting.title}}</title>
+	</head>
+	<body>
+		<div class="container">
+			{% with messages = get_flashed_messages() %} {% if messages %}
+			<div class="form">
+				<h3 class="message-text">Message</h3>
+				{% for message in messages %}
+				<p class="alert_text">{{message}}</p>
+				{% endfor %}
+			</div>
+			{% endif %} {% endwith %}
+			<div class="form">
+				<h3>User {{session["first_name"]}}</h3>
+				<div class="flex">
+					<a href="/logout"><button class="btn logout">Logout</button></a>
+                    <a href="/dashboard"><button class="btn">Dashboard</button></a>
+				</div>
+			</div>
+            <div class="form">
+                <h3>{{painting.title}}</h3>
+                <table>
+                    <tr>
+                        <td class="td-l">Painted by</td>
+                        <td>{{painting.paintedby.first_name}}{{painting.paintedby.last_name}}</td>
+                    </tr>
+                    <tr>
+                        <td class="td-l">Description</td>
+                        <td>{{painting.description}}</td>
+                    </tr>
+                    <tr>
+                        <td class="td-l">Price</td>
+                        <td>{{"${:,}".format(painting.price)}}</td>
+                    </tr>
+                    <tr>
+                        <td class="td-l">Number Purchased</td>
+                        <td>{{purchases}}</td>
+                    </tr>
+                </table>
+                {% if buy %}
+                <a href="/buypainting/{{painting.id}}"><button class="btn">Buy</button></a>
+                {% else %}
+                <h4 style="color: white;">Sold Out!</h4>
+                {% endif %}
+                </form>
+            </div>
+		</div>
+	</body>
+</html>
