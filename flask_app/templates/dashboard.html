@@ -46,8 +46,10 @@
 						<td>
 							<a href="/viewpainting/{{painting.id}}">{{painting.title}}</a> by {{painting.paintedby.first_name}}{{painting.paintedby.last_name}}
 						</td>
+						{% if painting.paintedby_id == session["user_id"]%}
 						<td><a href="/editpainting/{{painting.id}}"><button class="btn-small edit">Edit</button></a></td>
 						<td><a href="/deletepainting/{{painting.id}}"><button class="btn-small delete">Delete</button></a></td>
+						{% endif %}
 					</tr>
 					{% endfor %}
 				</table>
